@@ -4,7 +4,7 @@ describe "Customer API" do
   it "displays a list of all the merchants" do
     create_list(:customer, 3)
     get '/api/v1/customers'
-    customerss = JSON.parse(response.body)
+    customers = JSON.parse(response.body)
     expect(response).to be_success
     expect(customers.count).to eq(3)
   end
