@@ -8,7 +8,9 @@ Rails.application.routes.draw do
         get "/find"     => "search#show"
         get "/find_all" => "search#index"
       end
-      resources :items, only: [:index, :show]
+      resources :items, only: [:index, :show] do
+        resources :merchant, only: [:index], controller: "items/merchant"
+      end
       resources :invoice_items, only: [:index, :show]
       resources :invoices, only: [:index, :show]
     end

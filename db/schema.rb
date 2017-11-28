@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 20171128011819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
 
   create_table "customers", force: :cascade do |t|
     t.string "first_name"

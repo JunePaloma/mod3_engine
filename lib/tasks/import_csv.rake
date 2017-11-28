@@ -8,6 +8,7 @@ require 'csv'
         Customer.create!(row.to_h)
       end
     end
+
     desc "import merchants"
     task create_merchants: :environment do
       puts "You are running rake task in #{Rails.env} environment importing merchants"
@@ -15,6 +16,7 @@ require 'csv'
         Merchant.create!(row.to_h)
       end
     end
+
     desc "import items"
     task create_items: :environment do
       puts "You are running rake task in #{Rails.env} environment importing items"
@@ -30,6 +32,7 @@ require 'csv'
         Invoice.create!(row.to_h)
       end
     end
+
     desc "import transactions"
     task create_transactions: :environment do
       puts "You are running rake task in #{Rails.env} environment importing transactions"
@@ -37,13 +40,16 @@ require 'csv'
         Transaction.create!(row.to_h)
       end
     end
+
     desc "import invoice items"
     task create_invoice_items: :environment do
-       puts "You are running rake task in #{Rails.env} environment importing invoice_items"
+      puts "You are running rake task in #{Rails.env} environment importing invoice_items"
       CSV.foreach("db/csv/invoice_items.csv", :headers => true) do |row|
         InvoiceItem.create!(row.to_h)
       end
     end
-      desc "import data from csv's"
-      task import: [:create_customers, :create_merchants, :create_invoices, :create_items, :create_invoice_items, :create_transactions]
+
+    desc "import data from csv's"
+    task import: [:create_customers, :create_merchants, :create_invoices,
+                  :create_items, :create_invoice_items, :create_transactions]
   end
