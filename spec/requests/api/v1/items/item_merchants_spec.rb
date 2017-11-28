@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "Item Merchants relationship API" do
-  describe "GET #show" do
+  describe "GET #index" do
     it "returns a single merchant" do
        item = create(:item)
        get "/api/v1/items/#{item.id}/merchant"
