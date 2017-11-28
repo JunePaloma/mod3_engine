@@ -16,5 +16,4 @@ describe "Transaction API" do
     expect(response).to be_success
     expect(transaction["id"]).to eq(id)
   end
-
 end

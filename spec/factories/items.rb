@@ -1,10 +1,9 @@
 FactoryBot.define do
   factory :item do
-    name "MyString"
-    description "MyString"
-    unit_price "MyString"
-    integer "MyString"
-    merchant "MyString"
-    references "MyString"
+    name "BananaPhone"
+    description "It's bananas"
+    unit_price 10000
+    merchant
+
   end
 end
