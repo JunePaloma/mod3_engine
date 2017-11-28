@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Customer API" do
-  it "displays a list of all the merchants" do
+  it "displays a list of all the customers" do
     create_list(:customer, 3)
     get '/api/v1/customers'
     customers = JSON.parse(response.body)
@@ -16,5 +16,4 @@ describe "Customer API" do
     expect(response).to be_success
     expect(customer["id"]).to eq(id)
   end
-
 end

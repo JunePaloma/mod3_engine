@@ -1,9 +1,11 @@
-# FactoryBot.define do
-#   factory :invoice do
-#     merchant, "MyString"
-#     references "MyString"
-#     customer, "MyString"
-#     references "MyString"
-#     status "MyString"
-#   end
-# end
+FactoryBot.define do
+  factory :invoice do
+
+    status "shipped"
+    created_at "2012-03-27 14:53:59 UTC"
+    updated_at "2012-03-28 14:53:59 UTC"
+
+    merchant
+    customer
+  end
+end
