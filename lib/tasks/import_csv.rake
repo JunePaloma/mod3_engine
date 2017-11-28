@@ -23,6 +23,9 @@ require 'csv'
     task create_invoice_items: :environemnt do
       CSV.foreach("./db/csv/invoice_items.csv", :headers => true) do |row|
         InvoiceItem.create!(row.to_h)
+      end
+    end
+      task import: [:create_customers, :create_merchants, :create_invoices, :create_items, :create_invoice_items, :create_transactions]
     end
 
    end
