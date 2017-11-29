@@ -30,7 +30,11 @@ Rails.application.routes.draw do
        get "/find"     => "search#show"
        get "/find_all" => "search#index"
      end
-      resources :invoice_items, only: [:index, :show]
+
+      resources :invoice_items, only: [:index, :show] do
+       resources :item, only: [:index], controller: "invoice_items/items"
+      end
+      
       resources :invoices, only: [:index, :show]
     end
   end
