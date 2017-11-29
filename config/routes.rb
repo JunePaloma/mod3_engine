@@ -12,6 +12,11 @@ Rails.application.routes.draw do
         resources :items, only: [:index], controller: "merchants/items"
       end
 
+      namespace :customers do
+        get "/find"     => "search#show"
+        get "/find_all" => "search#index"
+      end
+      
       resources :customers, only: [:index, :show]
 
       resources :transactions, only: [:index, :show]
