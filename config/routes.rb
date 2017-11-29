@@ -16,8 +16,10 @@ Rails.application.routes.draw do
         get "/find"     => "search#show"
         get "/find_all" => "search#index"
       end
-      
-      resources :customers, only: [:index, :show]
+
+      resources :customers, only: [:index, :show] do
+        resources :transactions, only: [:index], controller: "customers/transactions"
+      end
 
       resources :transactions, only: [:index, :show]
 

@@ -4,12 +4,15 @@ describe "Customer Transactions relationship API" do
   describe "GET #index" do
     it "returns a collection of transactions" do
        customer = create(:customer)
-       transactions = create_list(:transactions, 2, customer: customer)
+       invoice = create(:invoice, customer: customer)
+       transactions = create_list(:transaction, 2, invoice: invoice)
+
        get "/api/v1/customers/#{customer.id}/transactions"
        parsed_body = JSON.parse(response.body, symbolize_names: true)
-       binding.pry
+
        expect(parsed_body.count).to eq(2)
-       expect(parsed_body).to eq({id: customer.transactions.first.id, result: customer.transactions.first.id, invoice_id: customer.transactions.first.invoice_id}, {id: customer.transactions.last.id, result: customer.transactions.last.id, invoice_id: customer.transactions.last.invoice_id})
+       expect(parsed_body).to eq([{id: customer.transactions.first.id, result: customer.transactions.first.result, invoice_id: customer.transactions.first.invoice_id},
+       {id: customer.transactions.last.id, result: customer.transactions.last.result, invoice_id: customer.transactions.last.invoice_id}])
     end
   end
 end
