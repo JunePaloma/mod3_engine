@@ -11,7 +11,6 @@ describe "Item invoice items relationship API" do
        expect(response).to be_success
        expect(parsed_body.count).to eq(2)
        expect(parsed_body.first[:id]).to eq(invoice_items.first.id)
-      #  expect(parsed_body).to eq("#{item.invoice_items}")
     end
   end
 end
