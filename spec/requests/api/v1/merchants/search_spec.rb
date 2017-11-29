@@ -9,4 +9,12 @@ describe "Merchant search API" do
       expect(parsed_body).to eq({id: merchant.id, name: merchant.name})
     end
   end
+  describe "GET #index" do
+    it "returns all merchants" do
+       merchant = create(:merchant)
+       get "/api/v1/merchants/find_all?name=#{merchant.name}"
+       parsed_body = JSON.parse(response.body, symbolize_names: true)
+       expect(parsed_body).to eq([{id: merchant.id, name: merchant.name}])
+    end
+  end
 end
