@@ -6,7 +6,7 @@ describe "Item Search API" do
        item = create(:item)
        get "/api/v1/items/find?name=#{item.name}"
        parsed_body = JSON.parse(response.body, symbolize_names: true)
-       expect(parsed_body).to eq({id: item.id, name: item.name})
+       expect(parsed_body).to eq({id: item.id, name: item.name, description: item.description})
     end
   end
   describe "GET #index" do
@@ -14,7 +14,7 @@ describe "Item Search API" do
        item = create(:item)
        get "/api/v1/items/find_all?name=#{item.name}"
        parsed_body = JSON.parse(response.body, symbolize_names: true)
-       expect(parsed_body).to eq([{id: item.id, name: item.name}])
+       expect(parsed_body).to eq([{id: item.id, name: item.name, description: item.description}])
     end
   end
 end
